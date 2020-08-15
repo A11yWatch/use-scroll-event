@@ -1,0 +1,34 @@
+{
+  "name": "use-scroll-event",
+  "version": "0.0.12",
+  "description": "A scroll event hook for React that tracks page position and detects active scrolling.",
+  "main": "dist/use-scroll-event.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "prepare": "tsc"
+  },
+  "keywords": [
+    "scroll-event",
+    "scroll-hook"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/A11yWatch/use-scroll-event.git"
+  },
+  "author": "Jeffrey Mendez <jeffmendez19@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/A11yWatch/use-scroll-event/issues"
+  },
+  "homepage": "https://github.com/A11yWatch/use-scroll-event#readme",
+  "devDependencies": {
+    "@types/react": "16.9.11",
+    "jest": "^25.1.0",
+    "typescript": "^3.7.5"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  }
+}
