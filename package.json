@@ -1,6 +1,6 @@
 {
   "name": "use-scroll-event",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A scroll event hook for React that tracks page position and detects active scrolling.",
   "main": "dist/use-scroll-event.js",
   "types": "types/index.d.ts",

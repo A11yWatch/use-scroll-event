@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 interface Props {
-  x: number;
-  y: number;
-  scrolling: boolean;
+  x?: number;
+  y?: number;
+  scrolling?: boolean;
   scrollOffDelay?: number;
 }
 
