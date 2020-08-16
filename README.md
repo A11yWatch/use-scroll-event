@@ -14,6 +14,7 @@ $ yarn add use-scroll-event
 import { useScrollEvent } from "use-scroll-event";
 
 function App() {
-  const { scrolling, x, y } = useScrollEvent();
+  // detectScrolling: optional for scrolling detection - optimization
+  const { scrolling, x, y } = useScrollEvent({ detectScrolling: true });
 }
 ```

@@ -1,20 +1,30 @@
 import { useState, useEffect } from "react";
 
-interface Props {
+export interface ScrollProps {
   x?: number;
   y?: number;
   scrolling?: boolean;
   scrollOffDelay?: number;
+  detectScrolling?: boolean;
 }
 
-export const useScrollEvent = (
-  { x, y, scrolling, scrollOffDelay }: Props = {
+interface ScrollEvent {
+  (params?: ScrollProps): {
+    x: number;
+    y: number;
+    scrolling: boolean;
+  };
+}
+
+export const useScrollEvent: ScrollEvent = (
+  { x, y, scrolling, scrollOffDelay, detectScrolling } = {
     x: 0,
     y: 0,
     scrolling: false,
     scrollOffDelay: 350,
+    detectScrolling: true,
   }
-): Props => {
+) => {
   const [scroll, setScroll] = useState(
     (typeof window !== "undefined" && {
       x: window.pageXOffset,
@@ -31,15 +41,17 @@ export const useScrollEvent = (
 
       requestAnimationFrame(() => {
         setScroll({ x: pageXOffset, y: pageYOffset, scrolling: true });
-        timer = setTimeout(
-          () =>
-            setScroll({
-              x: pageXOffset,
-              y: pageYOffset,
-              scrolling: false,
-            }),
-          scrollOffDelay || 350
-        );
+        if (detectScrolling) {
+          timer = setTimeout(
+            () =>
+              setScroll({
+                x: pageXOffset,
+                y: pageYOffset,
+                scrolling: false,
+              }),
+            scrollOffDelay || 350
+          );
+        }
       });
     };
 
@@ -54,8 +66,8 @@ export const useScrollEvent = (
   }, []);
 
   return {
-    x: scroll.x,
-    y: scroll.y,
-    scrolling: scroll.scrolling,
+    x: scroll?.x || 0,
+    y: scroll?.y || 0,
+    scrolling: !!scroll.scrolling,
   };
 };
