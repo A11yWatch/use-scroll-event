@@ -42,15 +42,13 @@ export const useScrollEvent: ScrollEvent = (
       requestAnimationFrame(() => {
         setScroll({ x: pageXOffset, y: pageYOffset, scrolling: true });
         if (detectScrolling) {
-          timer = setTimeout(
-            () =>
-              setScroll({
-                x: pageXOffset,
-                y: pageYOffset,
-                scrolling: false,
-              }),
-            scrollOffDelay || 350
-          );
+          timer = setTimeout(() => {
+            setScroll({
+              x: pageXOffset,
+              y: pageYOffset,
+              scrolling: false,
+            });
+          }, Number(scrollOffDelay));
         }
       });
     };
